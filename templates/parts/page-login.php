@@ -1,4 +1,5 @@
 <?php
+// Template part: page-login
 /* Template Name: Login Page */
 get_header();
 ?>
@@ -10,4 +11,3 @@ get_header();
 <?php
 get_footer();
 ?>
-

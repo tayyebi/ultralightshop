@@ -1,4 +1,6 @@
 <?php
+// Template part: single-product
+
 get_header();
 ?>
 <main>
@@ -23,4 +25,3 @@ get_header();
 <?php
 get_footer();
 ?>
-

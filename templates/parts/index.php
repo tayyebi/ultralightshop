@@ -1,4 +1,5 @@
 <?php
+// Template part: index
 get_header();
 ?>
 <main>
@@ -35,4 +36,3 @@ get_header();
 <?php
 get_footer();
 ?>
-

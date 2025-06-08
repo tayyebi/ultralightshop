@@ -1,4 +1,5 @@
 <?php
+// Template part: 404
 get_header();
 ?>
 <main>
@@ -11,4 +12,3 @@ get_header();
 <?php
 get_footer();
 ?>
-

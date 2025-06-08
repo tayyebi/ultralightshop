@@ -1,4 +1,6 @@
-<!-- File: searchform.php -->
+<?php
+// Template part: searchform
+?>
 <form role="search" method="get" class="search-form" action="<?php echo home_url('/'); ?>">
     <label>
         <span class="screen-reader-text"><?php _x('Search', 'label') ?></span>
@@ -11,4 +13,3 @@
     <input type="text" id="price-amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
     <input type="submit" class="search-submit" value="<?php echo esc_attr_x('Search', 'submit button') ?>">
 </form>
-

@@ -1,12 +1,12 @@
 <?php
+// Template part: page
 get_header();
 ?>
 <main>
     <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
         <article <?php post_class(); ?>>
             <header>
-                <h2><?php the_title(); ?></h2>
-                <p>By <?php the_author(); ?> on <time datetime="<?php echo get_the_date('c'); ?>"><?php echo get_the_date(); ?></time></p>
+                <h1><?php the_title(); ?></h1>
             </header>
             <section>
                 <?php the_content(); ?>
@@ -17,4 +17,3 @@ get_header();
 <?php
 get_footer();
 ?>
-

@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<?php
+// Template part: header
+?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
   <meta charset="<?php bloginfo('charset'); ?>">
@@ -114,4 +116,3 @@
 <div id="loading" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%, -50%);background-color:#fff;padding:10px;border:1px solid #ccc;z-index:1000;">
   <?php _e('Loading', 'ultralightshop'); ?> ...
 </div>
-

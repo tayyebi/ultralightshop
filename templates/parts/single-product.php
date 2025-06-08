@@ -1,7 +1,6 @@
 <?php
-// Template part: single-product
-
-get_header();
+$is_lazyload = isset($_SERVER['HTTP_X_LAZYLOAD_NAV']) && $_SERVER['HTTP_X_LAZYLOAD_NAV'] === '1';
+if (!$is_lazyload) get_header();
 ?>
 <main>
     <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
@@ -23,5 +22,5 @@ get_header();
     <?php endwhile; endif; ?>
 </main>
 <?php
-get_footer();
+if (!$is_lazyload) get_footer();
 ?>

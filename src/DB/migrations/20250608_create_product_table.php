@@ -1,18 +1,11 @@
 <?php
-// Custom DB tables for goods and product
-add_action('after_switch_theme', function() {
+// Migration: create_product_table
+return function() {
     global $wpdb;
     $charset_collate = $wpdb->get_charset_collate();
-    $goods_table = $wpdb->prefix . 'ultralightshop_goods';
     $product_table = $wpdb->prefix . 'ultralightshop_product';
     require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
-    $sql1 = "CREATE TABLE $goods_table (
-        id BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-        title VARCHAR(255) NOT NULL,
-        tags TEXT,
-        PRIMARY KEY (id)
-    ) $charset_collate;";
-    $sql2 = "CREATE TABLE $product_table (
+    $sql = "CREATE TABLE $product_table (
         id BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
         good_id BIGINT(20) UNSIGNED NOT NULL,
         category_id BIGINT(20) UNSIGNED NOT NULL,
@@ -22,6 +15,5 @@ add_action('after_switch_theme', function() {
         KEY good_id (good_id),
         KEY category_id (category_id)
     ) $charset_collate;";
-    dbDelta($sql1);
-    dbDelta($sql2);
-});
+    dbDelta($sql);
+};

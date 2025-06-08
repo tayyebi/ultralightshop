@@ -1,5 +1,4 @@
 <?php
-// Template part: header
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>

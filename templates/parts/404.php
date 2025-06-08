@@ -1,6 +1,6 @@
 <?php
-// Template part: 404
-get_header();
+$is_lazyload = isset($_SERVER['HTTP_X_LAZYLOAD_NAV']) && $_SERVER['HTTP_X_LAZYLOAD_NAV'] === '1';
+if (!$is_lazyload) get_header();
 ?>
 <main>
     <section class="error-404 not-found">
@@ -10,5 +10,5 @@ get_header();
     </section>
 </main>
 <?php
-get_footer();
+if (!$is_lazyload) get_footer();
 ?>

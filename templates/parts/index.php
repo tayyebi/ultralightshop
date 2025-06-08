@@ -1,6 +1,6 @@
 <?php
-// Template part: index
-get_header();
+$is_lazyload = isset($_SERVER['HTTP_X_LAZYLOAD_NAV']) && $_SERVER['HTTP_X_LAZYLOAD_NAV'] === '1';
+if (!$is_lazyload) get_header();
 ?>
 <main>
     <?php if (have_posts()) : ?>
@@ -34,5 +34,5 @@ get_header();
     <?php endif; ?>
 </main>
 <?php
-get_footer();
+if (!$is_lazyload) get_footer();
 ?>

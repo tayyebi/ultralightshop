@@ -1,16 +1,15 @@
 <?php
-// Template part: page-user-panel
-/* Template Name: User Panel */
+$is_lazyload = isset($_SERVER['HTTP_X_LAZYLOAD_NAV']) && $_SERVER['HTTP_X_LAZYLOAD_NAV'] === '1';
 if (!is_user_logged_in()) {
     wp_redirect(home_url('/login'));
     exit;
 }
-get_header();
+if (!$is_lazyload) get_header();
 ?>
 <main>
     <h2>My Orders</h2>
     <?php echo do_shortcode('[ultralightshop_orders]'); ?>
 </main>
 <?php
-get_footer();
+if (!$is_lazyload) get_footer();
 ?>

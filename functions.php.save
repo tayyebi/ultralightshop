@@ -2,11 +2,6 @@
 // File: functions.php
 
 
-// Load Simple Importer from the theme
-require_once get_template_directory() . '/inc/simple-importer.php';
-
-
-
 function ultralightshop_enqueue_scripts() {
     wp_enqueue_script('jquery');
     wp_enqueue_script('jquery-ui-core');
@@ -81,10 +76,10 @@ function ultralightshop_vendor_meta_callback($post) {
     wp_nonce_field('ultralightshop_vendor_meta', 'ultralightshop_vendor_meta_nonce');
     $website = get_post_meta($post->ID, 'website', true);
     $phone = get_post_meta($post->ID, 'phone', true);
-    $email = get_post_meta($post->ID, 'email', true);
+    echo '<label>Tagline: </label><input type="text" name="ultralight_vendor_tagline" value="'.esc_attr($tagline).'" /><br />';
     echo '<label>Website: </label><input type="text" name="ultralight_vendor_website" value="'.esc_attr($website).'" /><br />';
-    echo '<label>Phone: </label><input type="text" name="ultralight_vendor_phone" value="'.esc_attr($phone).'" /><br />';
-    echo '<label>E-Mail: </label><input type="text" name="ultralight_vendor_email" value="'.esc_attr($email).'" />';
+    echo '<label>E-Mail: </label><input type="text" name="ultralight_vendor_email" value="'.esc_attr($email).'" /><br />';
+    echo '<label>Phone: </label><input type="text" name="ultralight_vendor_phone" value="'.esc_attr($phone).'" />';
 }
 
 function ultralightshop_save_vendor_meta($post_id) {
@@ -95,9 +90,6 @@ function ultralightshop_save_vendor_meta($post_id) {
     }
     if (isset($_POST['ultralight_vendor_phone'])) {
         update_post_meta($post_id, 'phone', sanitize_text_field($_POST['ultralight_vendor_phone']));
-    }
-    if (isset($_POST['ultralight_vendor_email'])) {
-        update_post_meta($post_id, 'email', sanitize_text_field($_POST['ultralight_vendor_email']));
     }
 }
 add_action('save_post', 'ultralightshop_save_vendor_meta');

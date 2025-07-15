@@ -29,6 +29,31 @@ get_header();
     <?php endif; ?>
 
     <?php
+    // Query for Vendors (Custom Post Type "vendor")
+    $args_vendors = array(
+        'post_type'      => 'vendor', // Adjust if necessary
+        'posts_per_page' => 5,         // Fetch the latest 5 vendors
+        'orderby'        => 'date',
+        'order'          => 'DESC',
+    );
+    $vendors_query = new WP_Query($args_vendors);
+    if ( $vendors_query->have_posts() ) : ?>
+	    <?php while ( $vendors_query->have_posts() ) : $vendors_query->the_post(); ?>
+	        <article <?php post_class('vendor-item'); ?>>
+	            <header>
+	                <h2>
+	                    <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+	                </h2>
+	            </header>
+	            <section>
+	                <?php the_excerpt(); ?>
+	            </section>
+	        </article>
+	    <?php endwhile; ?>
+    <?php wp_reset_postdata(); ?>
+    <?php endif; ?>
+
+    <?php
     // Default Posts Loop (for blog posts or other post types)
     if ( have_posts() ) :
         while ( have_posts() ) : the_post(); ?>

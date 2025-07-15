@@ -1,6 +1,9 @@
 <?php
 namespace UltralightShop;
 
+require 'templates/index.php';
+return;
+
 spl_autoload_register(function (string $class_name): void {
     $namespace = 'UltralightShop';
     if (strpos($class_name, $namespace) === 0) {
@@ -35,6 +38,6 @@ $router->add('login', function () {
 // Register the admin menus
 (new Menus())->register();
 
-// Example usage: $router->dispatch('login');
+$router->dispatch('login');
 
 

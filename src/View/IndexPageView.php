@@ -8,12 +8,8 @@ class LoginPageView extends View
 {
     private $shortcodes;
 
-    public function __construct($shortcodes = null)
+    public function __construct()
     {
-        if ($shortcodes === null) {
-            $shortcodes = new \UltralightShop\Shortcodes\User();
-        }
-        $this->shortcodes = $shortcodes;
         parent::__construct();
     }
 

@@ -28,18 +28,12 @@ use UltralightShop\View\LoginPageView;
 use UltralightShop\Admin\Menus;
 
 $router = new Router();
-$router->add('', function () {
+$router->add('/', function () {
     $view = new IndexPageView();
-    $view->render();
-});
-$router->add('login', function () {
-    $view = new LoginPageView();
     $view->render();
 });
 
 // Register the admin menus
 (new Menus())->register();
 
-$router->dispatch('');
-
-
+$router->dispatch('/');

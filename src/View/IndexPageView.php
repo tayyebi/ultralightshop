@@ -4,7 +4,7 @@ namespace UltralightShop\View;
 use UltralightShop\Core\View;
 use UltralightShop\Shortcodes\User;
 
-class LoginPageView extends View
+class IndexPageView extends View
 {
     private $shortcodes;
 

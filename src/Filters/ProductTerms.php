@@ -12,7 +12,7 @@ class ProductTerms
     {
         if (in_array('category', $taxonomies) || in_array('post_tag', $taxonomies)) {
             $terms = array_filter($terms, function($term) {
-                return get_term_meta($term->term_id, 'ultralightshop_product_only', true);
+                return get_term_meta($term->term_id, 'product_only', true);
             });
         }
         return $terms;

@@ -16,7 +16,7 @@ class Menus
             'Product Categories',
             'Product Categories',
             'manage_options',
-            'edit-tags.php?taxonomy=product_cat&post_type=ultralightshop_product',
+            'edit-tags.php?taxonomy=product_cat&post_type=product',
             '',
             'dashicons-category',
             25
@@ -25,7 +25,7 @@ class Menus
             'Product Tags',
             'Product Tags',
             'manage_options',
-            'edit-tags.php?taxonomy=product_tag&post_type=ultralightshop_product',
+            'edit-tags.php?taxonomy=product_tag&post_type=product',
             '',
             'dashicons-tag',
             26
@@ -34,7 +34,7 @@ class Menus
             'Products',
             'Products',
             'manage_options',
-            'edit.php?post_type=ultralightshop_product',
+            'edit.php?post_type=product',
             '',
             'dashicons-products',
             27
@@ -43,17 +43,17 @@ class Menus
             'Goods',
             'Goods',
             'manage_options',
-            'edit.php?post_type=ultralightshop_goods',
+            'edit.php?post_type=goods',
             '',
             'dashicons-cart',
             28
         );
         add_submenu_page(
-            'edit-tags.php?taxonomy=product_cat&post_type=ultralightshop_product',
+            'edit-tags.php?taxonomy=product_cat&post_type=product',
             'Category Properties',
             'Category Properties',
             'manage_options',
-            'ultralightshop_category_properties',
+            'category_properties',
             [$this, 'renderCategoryPropertiesPage']
         );
     }
@@ -65,7 +65,7 @@ class Menus
             'taxonomy' => $taxonomy,
             'hide_empty' => false
         ]);
-        $option_name = 'ultralightshop_category_properties';
+        $option_name = 'category_properties';
         if ($this->isFormSubmitted()) {
             $this->saveCategoryProperties($categories, $option_name);
         }

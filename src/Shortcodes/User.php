@@ -5,9 +5,9 @@ class User
 {
     public function register(): void
     {
-        add_shortcode('ultralightshop_login', [$this, 'loginForm']);
-        add_shortcode('ultralightshop_register', [$this, 'registerForm']);
-        add_shortcode('ultralightshop_orders', [$this, 'orders']);
+        add_shortcode('login', [$this, 'loginForm']);
+        add_shortcode('register', [$this, 'registerForm']);
+        add_shortcode('orders', [$this, 'orders']);
     }
 
     public function loginForm()
@@ -29,7 +29,7 @@ class User
 
     public function renderLoginForm(): string
     {
-        return do_shortcode('[ultralightshop_login]');
+        return do_shortcode('[login]');
     }
 
     public function registerForm()
@@ -38,8 +38,8 @@ class User
             return __('You are already registered and logged in.', 'ultralightshop');
         }
         ob_start();
-        if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['ultralightshop_register_nonce'])) {
-            if (!wp_verify_nonce($_POST['ultralightshop_register_nonce'], 'ultralightshop_register')) {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['register_nonce'])) {
+            if (!wp_verify_nonce($_POST['register_nonce'], 'register')) {
                 echo '<p>' . __('Nonce verification failed', 'ultralightshop') . '</p>';
             } else {
                 $username = sanitize_user($_POST['username']);
@@ -92,7 +92,7 @@ class User
                 <label for="password"><?php _e('Password', 'ultralightshop'); ?></label>
                 <input name="password" id="password" type="password" required>
             </p>
-            <?php wp_nonce_field('ultralightshop_register', 'ultralightshop_register_nonce'); ?>
+            <?php wp_nonce_field('register', 'register_nonce'); ?>
             <p>
                 <input type="submit" value="<?php _e('Register', 'ultralightshop'); ?>">
             </p>

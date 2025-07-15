@@ -8,7 +8,7 @@ if (!$is_lazyload) get_header();
 ?>
 <main>
     <h2>My Orders</h2>
-    <?php echo do_shortcode('[ultralightshop_orders]'); ?>
+    <?php echo do_shortcode('[orders]'); ?>
 </main>
 <?php
 if (!$is_lazyload) get_footer();

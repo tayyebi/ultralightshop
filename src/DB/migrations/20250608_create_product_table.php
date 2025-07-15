@@ -3,7 +3,7 @@
 return function() {
     global $wpdb;
     $charset_collate = $wpdb->get_charset_collate();
-    $product_table = $wpdb->prefix . 'ultralightshop_product';
+    $product_table = $wpdb->prefix . 'product';
     require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
     $sql = "CREATE TABLE $product_table (
         id BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,

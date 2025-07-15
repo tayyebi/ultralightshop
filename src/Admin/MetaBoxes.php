@@ -16,7 +16,7 @@ class MetaBoxes
 
     public function productMetaCallback($post): void
     {
-        wp_nonce_field('ultralightshop_product_meta', 'ultralightshop_product_meta_nonce');
+        wp_nonce_field('product_meta', 'product_meta_nonce');
         $price = get_post_meta($post->ID, 'price', true);
         $sku = get_post_meta($post->ID, 'sku', true);
         echo '<label>Price: </label><input type="text" name="ultralight_product_price" value="'.esc_attr($price).'" /><br />';
@@ -25,7 +25,7 @@ class MetaBoxes
 
     public function saveProductMeta($post_id): void
     {
-        if (!isset($_POST['ultralightshop_product_meta_nonce']) || !wp_verify_nonce($_POST['ultralightshop_product_meta_nonce'], 'ultralightshop_product_meta')) return;
+        if (!isset($_POST['product_meta_nonce']) || !wp_verify_nonce($_POST['product_meta_nonce'], 'product_meta')) return;
         if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
         if (isset($_POST['ultralight_product_price'])) {
             update_post_meta($post_id, 'price', sanitize_text_field($_POST['ultralight_product_price']));

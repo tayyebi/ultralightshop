@@ -51,8 +51,8 @@ fonts/
 
 - **Products**: Add new products via the "Products" custom post type. Set price and SKU in the meta box.
 - **Orders**: Orders are managed as a custom post type (not public).
-- **User Registration/Login**: Use `[ultralightshop_register]` and `[ultralightshop_login]` shortcodes on the respective pages.
-- **User Panel**: Shows logged-in user's orders via `[ultralightshop_orders]` shortcode.
+- **User Registration/Login**: Use `[register]` and `[login]` shortcodes on the respective pages.
+- **User Panel**: Shows logged-in user's orders via `[orders]` shortcode.
 - **Search**: Use the search form with price slider for product filtering.
 
 ## Customization

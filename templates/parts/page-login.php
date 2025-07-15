@@ -6,6 +6,6 @@ $view->render();
 ?>
 <main>
     <h2>Login</h2>
-    <?php echo do_shortcode('[ultralightshop_login]'); ?>
+    <?php echo do_shortcode('[login]'); ?>
     <p><?php _e('Not registered yet?', 'ultralightshop'); ?> <a href="<?php echo home_url('/register'); ?>"><?php _e('Register Here', 'ultralightshop'); ?></a></p>
 </main>

@@ -7,8 +7,8 @@ class Migrations
     {
         global $wpdb;
         $charset_collate = $wpdb->get_charset_collate();
-        $goods_table = $wpdb->prefix . 'ultralightshop_goods';
-        $product_table = $wpdb->prefix . 'ultralightshop_product';
+        $goods_table = $wpdb->prefix . 'goods';
+        $product_table = $wpdb->prefix . 'product';
         require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
         $sql1 = "CREATE TABLE $goods_table (
             id BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -48,7 +48,7 @@ class Migrations
         $migrationsDir = __DIR__ . '/migrations';
         $files = glob($migrationsDir . '/*.php');
         sort($files);
-        $applied = get_option('ultralightshop_migrations', []);
+        $applied = get_option('migrations', []);
         if (!is_array($applied)) $applied = [];
         foreach ($files as $file) {
             $migrationName = basename($file);
@@ -60,6 +60,6 @@ class Migrations
                 }
             }
         }
-        update_option('ultralightshop_migrations', $applied);
+        update_option('migrations', $applied);
     }
 }

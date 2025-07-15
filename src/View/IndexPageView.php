@@ -1,9 +1,26 @@
 <?php
-get_header();
-?>
-<main>
+namespace UltralightShop\View;
 
-    <?php
+use UltralightShop\Core\View;
+use UltralightShop\Shortcodes\User;
+
+class LoginPageView extends View
+{
+    private $shortcodes;
+
+    public function __construct($shortcodes = null)
+    {
+        if ($shortcodes === null) {
+            $shortcodes = new \UltralightShop\Shortcodes\User();
+        }
+        $this->shortcodes = $shortcodes;
+        parent::__construct();
+    }
+
+    public function render(): void
+    {
+        parent::render(function () {
+
     // Query for Products (Custom Post Type "product")
     $args_products = array(
         'post_type'      => 'product', // Adjust if necessary
@@ -15,6 +32,31 @@ get_header();
     if ( $products_query->have_posts() ) : ?>
 	    <?php while ( $products_query->have_posts() ) : $products_query->the_post(); ?>
 	        <article <?php post_class('product-item'); ?>>
+	            <header>
+	                <h2>
+	                    <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+	                </h2>
+	            </header>
+	            <section>
+	                <?php the_excerpt(); ?>
+	            </section>
+	        </article>
+	    <?php endwhile; ?>
+    <?php wp_reset_postdata(); ?>
+    <?php endif; ?>
+
+    <?php
+    // Query for Vendors (Custom Post Type "vendor")
+    $args_vendors = array(
+        'post_type'      => 'vendor', // Adjust if necessary
+        'posts_per_page' => 5,         // Fetch the latest 5 vendors
+        'orderby'        => 'date',
+        'order'          => 'DESC',
+    );
+    $vendors_query = new WP_Query($args_vendors);
+    if ( $vendors_query->have_posts() ) : ?>
+	    <?php while ( $vendors_query->have_posts() ) : $vendors_query->the_post(); ?>
+	        <article <?php post_class('vendor-item'); ?>>
 	            <header>
 	                <h2>
 	                    <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
@@ -63,6 +105,6 @@ get_header();
     
 </main>
 <?php
-get_footer();
-?>
-
+        });
+    }
+}

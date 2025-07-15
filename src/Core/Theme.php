@@ -1,13 +1,25 @@
 <?php
 namespace UltralightShop\Core;
 
+use UltralightShop\Core\Setup;
+use UltralightShop\Core\Enqueue;
+use UltralightShop\Core\Hooks;
+use UltralightShop\Admin\Settings;
+use UltralightShop\Admin\MetaBoxes;
+use UltralightShop\Admin\ProductTermMeta;
+use UltralightShop\CustomPostTypes\Product;
+use UltralightShop\DB\Tables;
+use UltralightShop\Filters\ProductTerms;
+use UltralightShop\Filters\Query;
+use UltralightShop\Shortcodes\User;
+
 class Theme
 {
     private static $instance;
 
     public static function getInstance(): self
     {
-        if (!self::$instance) {
+        if (! self::$instance) {
             self::$instance = new self();
         }
         return self::$instance;
@@ -18,13 +30,14 @@ class Theme
         (new Setup())->register();
         (new Enqueue())->register();
         (new Hooks())->register();
-        (new Admin\Settings())->register();
-        (new Admin\MetaBoxes())->register();
-        (new Admin\ProductTermMeta())->register();
-        (new CustomPostTypes\Product())->register();
-        (new DB\Tables())->register();
-        (new Filters\ProductTerms())->register();
-        (new Filters\Query())->register();
-        (new Shortcodes\User())->register();
+        (new Settings())->register();
+        (new MetaBoxes())->register();
+        (new ProductTermMeta())->register();
+        (new Product())->register();
+        (new Tables())->register();
+        (new ProductTerms())->register();
+        (new Query())->register();
+        (new User())->register();
     }
 }
+

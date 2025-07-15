@@ -8,9 +8,6 @@ get_header();
                 <h2><?php the_title(); ?></h2>
 		<p><?php echo esc_html(get_post_meta(get_the_ID(), 'tagline', true)); ?></p>
             </header>
-	    <pre>
-<?php var_dump(get_post_meta($post->ID)); ?>
-	    </pre>
             <aside>
                 <p><strong>Website: </strong><a rel="noopener nofollow" href="<?php echo esc_html(get_post_meta(get_the_ID(), 'website', true)); ?>"><?php echo esc_html(get_post_meta(get_the_ID(), 'website', true)); ?></a></p>
                 <p><strong>Phone: </strong><a href="tel:<?php echo esc_html(get_post_meta(get_the_ID(), 'phone', true)); ?>"><?php echo esc_html(get_post_meta(get_the_ID(), 'phone', true)); ?></a></p>

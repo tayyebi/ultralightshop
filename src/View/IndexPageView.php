@@ -13,7 +13,7 @@ class LoginPageView extends View
         parent::__construct();
     }
 
-    public function render(): void
+    public function show(): void
     {
         parent::render(function () {
 

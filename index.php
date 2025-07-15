@@ -30,7 +30,7 @@ use UltralightShop\Admin\Menus;
 $router = new Router();
 $router->add('/', function () {
     $view = new IndexPageView();
-    $view->render();
+    $view->show();
 });
 
 // Register the admin menus

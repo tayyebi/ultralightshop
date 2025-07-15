@@ -5,7 +5,7 @@ class View
 {
     protected $is_lazyload;
 
-    public function __construct()
+    public function __construct(callable $content)
     {
         $this->is_lazyload = isset($_SERVER['HTTP_X_LAZYLOAD_NAV']) && $_SERVER['HTTP_X_LAZYLOAD_NAV'] === '1';
     }
@@ -20,16 +20,10 @@ class View
         if (!$this->is_lazyload) get_footer();
     }
 
-    public function render(callable $content): void
+    protected function render(callable $content): void
     {
         $this->beforeRender();
         $content();
         $this->afterRender();
-    }
-
-    public static function renderTemplate(string $template, array $vars = []): void
-    {
-        extract($vars);
-        include locate_template($template);
     }
 }
